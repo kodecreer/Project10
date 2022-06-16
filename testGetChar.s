@@ -13,6 +13,8 @@ _start:
     call getchar
     cmp ecx, 'ye';we will enter ye
     jz fail_c2
+    cmp al, 'y'
+    jnz fail_c2
 
     call getchar
     cmp al, 'n';we will enter in y
