@@ -1,4 +1,6 @@
-
+section .data
+ecxtemp:
+    dd 0
 section .bss
 cin:
     resb 1
@@ -27,11 +29,15 @@ getchar:
     ;and enter more than one character
     cmp byte[ecx + eax -1], 10
     jz good_read
+    ;store it into a temp
+    mov [ecxtemp], ecx
+    ;;;;;;;;;;;;;;;;;;;;;;
     mov ecx, dummy
     mov edx, 100
     mov eax, READ
     mov ebx, STDIN
     int 80h
+    mov ecx, [ecxtemp]
     jmp good_read
 good_read:
     ;moving ecx to al to make char comparisons
