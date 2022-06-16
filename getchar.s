@@ -8,8 +8,9 @@ getchar:
     mov ecx, cin
     mov eax, READ
     mov ebx, STDIN
-    mov edx, 1
+    mov edx, 2
     int 80h
     ;moving ecx to al to make char comparisons
-    mov al, [cin]
+    mov al, byte [cin]
+    
     ret
